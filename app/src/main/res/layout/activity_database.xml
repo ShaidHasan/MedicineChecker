@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DatabaseActivity"
+    android:orientation="vertical"
+    android:paddingTop="100dp">
+
+    <TextView
+        android:id="@+id/_displayLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ওষুধের নাম লিখুন.."
+        android:textSize="20dp"
+        android:paddingLeft="30dp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/_searchEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <Button
+        android:id="@+id/_displayDataBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="ওষুধ যাচাই করুন"
+        android:textColor="@android:color/black"
+        android:background="@android:color/holo_green_light"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:paddingTop="30dp"
+            android:id="@+id/_showText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20dp"
+            android:paddingLeft="30dp"
+            android:textColor="@android:color/black" />
+
+    </ScrollView>
+
+</LinearLayout>

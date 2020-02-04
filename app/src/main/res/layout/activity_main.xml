@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <SurfaceView
+        android:id="@+id/surface_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"/>
+
+    <TextView
+        android:id="@+id/text_view"
+        android:text="No Text"
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/startCamera"
+            android:text="ক্যামেরা চালু করুন"
+            android:layout_alignParentBottom="true"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center" />
+
+        <Button
+            android:id="@+id/btnCapture"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="ছবি তুলুন"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_weight="1"
+        android:id="@+id/btnVerify"
+        android:text="ওষুধ চেক করুন"
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/black"
+        android:background="@android:color/holo_green_light"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center" />
+
+</LinearLayout>
