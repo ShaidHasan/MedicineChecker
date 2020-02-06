@@ -103,6 +103,7 @@ public class DatabaseAccess {
         for(String queryWord:queryWords)
         {
             //SELECT * FROM DrugData WHERE LOWER(Brand) LIKE  'entacyd%'
+            //SELECT * FROM DrugData WHERE LOWER(Brand) REGEXP 'plus[\s]+' OR LOWER(Brand) REGEXP '[\s]+plus[\s]+' OR LOWER(Brand) REGEXP 'plus[\s]+'
             Cursor cursor = database.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE LOWER("+COLUMN_NAME+") LIKE  '%"+queryWord.toLowerCase()+"%'",null);
 
             while (cursor.moveToNext())
