@@ -12,9 +12,12 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class DatabaseAccess {
 
@@ -49,65 +52,46 @@ public class DatabaseAccess {
         }
     }
 
-    /*
-    public Cursor getQuotes(String rawString) {
-
-        String cleanString = rawString.replaceAll("\r", "").replaceAll("\n", "").toLowerCase();
-        String [] words = cleanString.split(" ");
-
-
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("SELECT * FROM DrugData WHERE LOWER(Brand) LIKE '%dummyText%'");
-
-        for (String word : words) {
-
-            stringBuilder.append(" OR LOWER(Brand) LIKE "+"'%"+word+"%'");
-
-        }
-
-        String finalQuery = stringBuilder.toString();
-        Log.d("query",finalQuery);
-
-        //SELECT * FROM DrugData WHERE LOWER(Brand) LIKE '%riboflavin%' OR LOWER(Brand) LIKE '%riboson%'
-        //Cursor cursor = database.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE LOWER("+COLUMN_NAME+") LIKE  '%"+cleanString+"%'",null);
-        Cursor cursor = database.rawQuery(finalQuery,null);
-
-        return cursor;
-    }
-
-     */
 
     public ArrayList<String> getQueryWords(String rawString) {
 
-        Log.d("msg","Raw String:"+rawString);
+        Log.d("raw",rawString);
 
         String pattern1 = "([\\s]+[\\d]+)";      //digit removal
         String pattern2 = "([\\s]+[mM][gG])";   //mg removal
         String pattern3 = "([\\s]+[bB][pP])";   //mg removal
         String pattern4 = "([\\s]+[\\W]+)";   //Non-alpha neumeric removal
         String pattern5 = "([\\s]+[a-zA-Z][\\s]+)";   //Single letter removal
+        String pattern6 = "([\\s]+[uU][sS][pP])";   //mg removal
+        String pattern7 = "([\\n]+)";   //mg removal
 
         String cleanString= rawString
                 .replaceAll(pattern1, " ")
                 .replaceAll(pattern2, " ")
                 .replaceAll(pattern3, " ")
                 .replaceAll(pattern4, " ")
-                .replaceAll(pattern5, " ");
+                .replaceAll(pattern5, " ")
+                .replaceAll(pattern6, " ")
+                .replaceAll(pattern7, " ");
 
-        Log.d("msg","Clean String:"+cleanString);
+        Log.d("clean",cleanString);
 
         String [] words = cleanString.split(" ");
         ArrayList<String> queryWords = new ArrayList<String>();
 
-        for (String str : words) {
-            queryWords.add(str.replaceAll("\r", "").replaceAll("\n", "").toLowerCase());
+        for (String word : words) {
+            queryWords.add(word.replaceAll("\r", "").replaceAll("\n", "").toLowerCase());
         }
 
-
+        Set<String> Duplicates = new LinkedHashSet<String>(queryWords);
+        queryWords.clear();
+        queryWords.addAll(Duplicates);
+        /*
         for (String str1 : queryWords) {
-            Log.d("msg:","query Words:"+str1);
+            Log.d("query:",str1);
         }
-
+        */
+        Log.d("query:",queryWords.toString());
         return queryWords;
 
     }
@@ -118,6 +102,7 @@ public class DatabaseAccess {
 
         for(String queryWord:queryWords)
         {
+            //SELECT * FROM DrugData WHERE LOWER(Brand) LIKE  'entacyd%'
             Cursor cursor = database.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE LOWER("+COLUMN_NAME+") LIKE  '%"+queryWord.toLowerCase()+"%'",null);
 
             while (cursor.moveToNext())
