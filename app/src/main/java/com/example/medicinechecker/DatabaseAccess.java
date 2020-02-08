@@ -58,13 +58,13 @@ public class DatabaseAccess {
 
         Log.d("raw",rawString);
 
-        String pattern1 = "([\\s]+[\\d]+)";      //digit removal
-        String pattern2 = "([\\s]+[mM][gG])";   //mg removal
-        String pattern3 = "([\\s]+[bB][pP])";   //mg removal
-        String pattern4 = "([\\s]+[\\W]+)";   //Non-alpha neumeric removal
-        String pattern5 = "([\\s]+[a-zA-Z][\\s]+)";   //Single letter removal
-        String pattern6 = "([\\s]+[uU][sS][pP])";   //mg removal
-        String pattern7 = "([\\n]+)";   //mg removal
+        //String pattern1 = "([\\s]+[\\d]+)";      //digit removal
+        String pattern1 = "([\\s]+[mM][gG])";   //mg removal
+        String pattern2 = "([\\s]+[bB][pP])";   //mg removal
+        String pattern3 = "([\\s]+[\\W]+)";   //Non-alpha neumeric removal
+        String pattern4 = "([\\s]+[a-zA-Z][\\s]+)";   //Single letter removal
+        String pattern5 = "([\\s]+[uU][sS][pP])";   //mg removal
+        String pattern6 = "([\\n]+)";   //mg removal
 
         String cleanString= rawString
                 .replaceAll(pattern1, " ")
@@ -72,8 +72,7 @@ public class DatabaseAccess {
                 .replaceAll(pattern3, " ")
                 .replaceAll(pattern4, " ")
                 .replaceAll(pattern5, " ")
-                .replaceAll(pattern6, " ")
-                .replaceAll(pattern7, " ");
+                .replaceAll(pattern6, " ");
 
         Log.d("clean",cleanString);
 
