@@ -25,7 +25,8 @@ public class DatabaseAccess {
     private SQLiteDatabase database;
     private static DatabaseAccess instance;
     private static final String TABLE_NAME="DrugData";
-    private static final String COLUMN_NAME="Brand";
+    //private static final String COLUMN_NAME="Brand";
+    private static final String COLUMN_NAME="BrandQuery";
 
     String [] words;
 
@@ -102,9 +103,9 @@ public class DatabaseAccess {
 
         for(String queryWord:queryWords)
         {
-            //SELECT * FROM DrugData WHERE LOWER(Brand) LIKE  'entacyd%'
-            //SELECT * FROM DrugData WHERE LOWER(Brand) REGEXP 'plus[\s]+' OR LOWER(Brand) REGEXP '[\s]+plus[\s]+' OR LOWER(Brand) REGEXP 'plus[\s]+'
-            Cursor cursor = database.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE LOWER("+COLUMN_NAME+") LIKE  '%"+queryWord.toLowerCase()+"%'",null);
+
+            Cursor cursor = database.rawQuery("SELECT * FROM "+TABLE_NAME+" WHERE LOWER("+COLUMN_NAME+") LIKE  '%@"+queryWord.toLowerCase()+"@%'",null);
+
 
             while (cursor.moveToNext())
             {
