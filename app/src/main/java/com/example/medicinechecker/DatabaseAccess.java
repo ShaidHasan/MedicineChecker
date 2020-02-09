@@ -57,7 +57,7 @@ public class DatabaseAccess {
     public ArrayList<String> getQueryWords(String rawString) {
 
         Log.d("raw",rawString);
-
+/*
         //String pattern1 = "([\\s]+[\\d]+)";      //digit removal
         String pattern1 = "([\\s]+[mM][gG])";   //mg removal
         String pattern2 = "([\\s]+[bB][pP])";   //mg removal
@@ -73,7 +73,14 @@ public class DatabaseAccess {
                 .replaceAll(pattern4, " ")
                 .replaceAll(pattern5, " ")
                 .replaceAll(pattern6, " ");
+*/
 
+        String cleanString1= rawString.replaceAll("([\\n]+)", " ");
+        String cleanString2= cleanString1.replaceAll("([\\W]+)", " ");
+        String cleanString3= cleanString2.replaceAll("([\\s]+[\\w][\\s]+)", " ");
+        String cleanString4= cleanString3.replaceAll("([\\s]+[\\w][\\s]+)", " ");
+        String cleanString5= cleanString4.replaceAll("([\\s]+([uU][sS][pP])|([mM][gG])|([mM][fF][gG])|([lL][iI][cC])|([nN][oO])[\\s]+)", " ");
+        String cleanString= cleanString5.replaceAll("([\\s]+)", " ");
         Log.d("clean",cleanString);
 
         String [] words = cleanString.split(" ");
@@ -86,11 +93,7 @@ public class DatabaseAccess {
         Set<String> Duplicates = new LinkedHashSet<String>(queryWords);
         queryWords.clear();
         queryWords.addAll(Duplicates);
-        /*
-        for (String str1 : queryWords) {
-            Log.d("query:",str1);
-        }
-        */
+
         Log.d("query:",queryWords.toString());
         return queryWords;
 
