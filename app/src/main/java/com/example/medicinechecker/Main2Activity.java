@@ -58,7 +58,7 @@ public class Main2Activity extends AppCompatActivity {
                 ArrayList<String> queryWords=databaseAccess.getQueryWords(rawString);
                 ArrayList<String> cursorIndexes=databaseAccess.getCursorIndexes(queryWords);
 
-                Log.d("msg","No of Indexes: "+cursorIndexes.size());
+                Log.d("number","No of Indexes: "+cursorIndexes.size());
 
                 if(cursorIndexes.size()==0){
                     titleText.setText("ওষুধটি রেজিস্টার্ড নয়");
@@ -75,18 +75,14 @@ public class Main2Activity extends AppCompatActivity {
                 Collection<Integer> values = IndexFrequency.values();
                 ArrayList<Integer> listOfValues = new ArrayList<Integer>(values);
 
-
                 for (Map.Entry<String, Integer> en : IndexFrequency.entrySet()) {
                     Log.d("keyval","Key:" + en.getKey() + ", Value:" + en.getValue());
                 }
 
-
-
                 Integer ExactIndex=databaseAccess.getExactIndex(listOfValues);
-                Log.d("msg","ExactIndex:"+ExactIndex);
+                Log.d("exact","ExactIndex:"+ExactIndex);
 
                 StringBuffer stringBuffer=new StringBuffer();
-
                 for (int i = 0; i <= ExactIndex; i++) {
 
                     Cursor cursor = databaseAccess.getCursor(listOfKeys.get(i));
@@ -109,8 +105,6 @@ public class Main2Activity extends AppCompatActivity {
                 showText.setText(stringBuffer.toString());
 
             }
-
-
 
         }
     }

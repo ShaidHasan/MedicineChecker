@@ -57,23 +57,6 @@ public class DatabaseAccess {
     public ArrayList<String> getQueryWords(String rawString) {
 
         Log.d("raw",rawString);
-/*
-        //String pattern1 = "([\\s]+[\\d]+)";      //digit removal
-        String pattern1 = "([\\s]+[mM][gG])";   //mg removal
-        String pattern2 = "([\\s]+[bB][pP])";   //mg removal
-        String pattern3 = "([\\s]+[\\W]+)";   //Non-alpha neumeric removal
-        String pattern4 = "([\\s]+[a-zA-Z][\\s]+)";   //Single letter removal
-        String pattern5 = "([\\s]+[uU][sS][pP])";   //mg removal
-        String pattern6 = "([\\n]+)";   //mg removal
-
-        String cleanString= rawString
-                .replaceAll(pattern1, " ")
-                .replaceAll(pattern2, " ")
-                .replaceAll(pattern3, " ")
-                .replaceAll(pattern4, " ")
-                .replaceAll(pattern5, " ")
-                .replaceAll(pattern6, " ");
-*/
 
         String cleanString1= rawString.replaceAll("([\\n]+)", " ");
         String cleanString2= cleanString1.replaceAll("([\\W]+)", " ");

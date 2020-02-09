@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     .build();
 
             cameraView.getHolder().addCallback(new SurfaceHolder.Callback() {
+
                 @Override
                 public void surfaceCreated(SurfaceHolder surfaceHolder) {
 
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
                 public void receiveDetections(Detector.Detections<TextBlock> detections) {
 
                     final SparseArray<TextBlock> items = detections.getDetectedItems();
+
                     if(items.size() != 0)
                     {
                         textView.post(new Runnable() {
@@ -130,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                                     stringBuilder.append("\n");
                                 }
                                 rawText=stringBuilder.toString();
+                                Log.d("scan",rawText);
                                 textView.setText(stringBuilder.toString());
                             }
                         });
