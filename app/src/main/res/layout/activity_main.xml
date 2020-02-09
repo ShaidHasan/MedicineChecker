@@ -13,7 +13,7 @@
         android:id="@+id/surface_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="5"/>
+        android:layout_weight="8"/>
 
     <TextView
         android:id="@+id/text_view"
@@ -23,7 +23,7 @@
         android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="0"
         android:gravity="center"/>
 
     <LinearLayout
