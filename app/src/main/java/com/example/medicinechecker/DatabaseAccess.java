@@ -26,7 +26,8 @@ public class DatabaseAccess {
     private static DatabaseAccess instance;
     private static final String TABLE_NAME="DrugData";
     //private static final String COLUMN_NAME="Brand";
-    private static final String COLUMN_NAME="BrandQuery";
+    //private static final String COLUMN_NAME="BrandQuery";
+    private static final String COLUMN_NAME="Query";
 
     String [] words;
 
@@ -59,11 +60,12 @@ public class DatabaseAccess {
         Log.d("raw",rawString);
 
         String cleanString1= rawString.replaceAll("([\\n]+)", " ");
-        String cleanString2= cleanString1.replaceAll("([\\W]+)", " ");
-        String cleanString3= cleanString2.replaceAll("([\\s]+[\\w][\\s]+)", " ");
+        String cleanString2= cleanString1.replaceAll("([\\d]+)", " ");
+        String cleanString3= cleanString2.replaceAll("([\\W]+)", " ");
         String cleanString4= cleanString3.replaceAll("([\\s]+[\\w][\\s]+)", " ");
-        String cleanString5= cleanString4.replaceAll("([\\s]+([uU][sS][pP])|([mM][gG])|([mM][fF][gG])|([lL][iI][cC])|([nN][oO])[\\s]+)", " ");
-        String cleanString= cleanString5.replaceAll("([\\s]+)", " ");
+        String cleanString5= cleanString4.replaceAll("([\\s]+[\\w][\\s]+)", " ");
+        String cleanString6= cleanString5.replaceAll("([\\s]+([uU][sS][pP])|([mM][gG])|([mM][fF][gG])|([lL][iI][cC])|([nN][oO])[\\s]+)", " ");
+        String cleanString= cleanString6.replaceAll("([\\s]+)", " ");
         Log.d("clean",cleanString);
 
         String [] words = cleanString.split(" ");
