@@ -79,7 +79,8 @@ public class Main2Activity extends AppCompatActivity {
                     Log.d("keyval","Key:" + en.getKey() + ", Value:" + en.getValue());
                 }
 
-                Integer ExactIndex=databaseAccess.getExactIndex(listOfValues);
+                //Integer ExactIndex=databaseAccess.getExactIndex(listOfValues);
+                Integer ExactIndex=0;
                 Log.d("exact","ExactIndex:"+ExactIndex);
 
                 StringBuffer stringBuffer=new StringBuffer();

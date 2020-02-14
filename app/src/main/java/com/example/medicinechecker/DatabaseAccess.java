@@ -60,8 +60,8 @@ public class DatabaseAccess {
         Log.d("raw",rawString);
 
         String cleanString1= rawString.replaceAll("([\\n]+)", " ");
-        String cleanString2= cleanString1.replaceAll("([\\d]+)", " ");
-        String cleanString3= cleanString2.replaceAll("([\\W]+)", " ");
+        //String cleanString2= cleanString1.replaceAll("([\\d]+)", " ");
+        String cleanString3= cleanString1.replaceAll("([\\W]+)", " ");
         String cleanString4= cleanString3.replaceAll("([\\s]+[\\w][\\s]+)", " ");
         String cleanString5= cleanString4.replaceAll("([\\s]+[\\w][\\s]+)", " ");
         String cleanString6= cleanString5.replaceAll("([\\s]+([uU][sS][pP])|([mM][gG])|([mM][fF][gG])|([lL][iI][cC])|([nN][oO])[\\s]+)", " ");
